@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 
 char* custom_log_tag = NULL;
 const char* level_str[] = {"D", "I", "W", "E", "F"};
 
 /***********************************************************************************
- * Function Name      : log_encore
+ * Function Name      : log_EronX_Tweaks
  * Inputs             : level - Log level
  *                      message (const char *) - message to log
  *                      variadic arguments - additional arguments for message
@@ -28,7 +28,7 @@ const char* level_str[] = {"D", "I", "W", "E", "F"};
  * Description        : print and logs a formatted message with a timestamp
  *                      to a log file.
  ***********************************************************************************/
-void log_encore(LogLevel level, const char* message, ...) {
+void log_EronX_Tweaks(LogLevel level, const char* message, ...) {
     char* timestamp = timern();
     char logMesg[MAX_OUTPUT_LENGTH];
     va_list args;

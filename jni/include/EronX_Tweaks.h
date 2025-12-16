@@ -19,16 +19,16 @@
 #define MAX_OUTPUT_LENGTH 256
 #define MAX_PATH_LENGTH 256
 
-#define NOTIFY_TITLE "Encore Tweaks"
-#define LOG_TAG "EncoreTweaks"
+#define NOTIFY_TITLE "EronX Tweaks"
+#define LOG_TAG "EronXTweaks"
 
-#define LOCK_FILE "/data/adb/.config/encore/.lock"
-#define LOG_FILE "/data/adb/.config/encore/encore.log"
-#define PROFILE_MODE "/data/adb/.config/encore/current_profile"
-#define GAME_INFO "/data/adb/.config/encore/gameinfo"
-#define GAMELIST "/data/adb/.config/encore/gamelist.txt"
-#define MODULE_PROP "/data/adb/modules/encore/module.prop"
-#define MODULE_UPDATE "/data/adb/modules/encore/update"
+#define LOCK_FILE "/data/adb/.config/EronX_Tweaks/.lock"
+#define LOG_FILE "/data/adb/.config/EronX_Tweaks/EronX_Tweaks.log"
+#define PROFILE_MODE "/data/adb/.config/EronX_Tweaks/current_profile"
+#define GAME_INFO "/data/adb/.config/EronX_Tweaks/gameinfo"
+#define GAMELIST "/data/adb/.config/EronX_Tweaks/gamelist.txt"
+#define MODULE_PROP "/data/adb/modules/EronX_Tweaks/module.prop"
+#define MODULE_UPDATE "/data/adb/modules/EronX_Tweaks/update"
 
 #define MY_PATH                                                                                                                    \
     "PATH=/system/bin:/system/xbin:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/debug_ramdisk:/sbin:/sbin/su:/su/bin:/su/" \
@@ -93,7 +93,7 @@ int create_lock_file(void);
 int write2file(const char* filename, const bool append, const bool use_flock, const char* data, ...);
 
 // Logging system
-void log_encore(LogLevel level, const char* message, ...);
+void log_EronX_Tweaks(LogLevel level, const char* message, ...);
 void external_log(LogLevel level, const char* tag, const char* message);
 
 // Process Utilities
@@ -105,7 +105,7 @@ int uidof(pid_t pid);
 extern pid_t mlbb_pid;
 MLBBState handle_mlbb(const char* gamestart);
 
-// Encore Profiler
+// EronX Profiler
 extern bool (*get_screenstate)(void);
 extern bool (*get_low_power_state)(void);
 char* get_gamestart(void);

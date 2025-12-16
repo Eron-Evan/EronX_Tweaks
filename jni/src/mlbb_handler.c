@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 
 // Cached MLBB PID
 pid_t mlbb_pid = 0;
@@ -49,7 +49,7 @@ MLBBState handle_mlbb(const char* gamestart) {
     // Fetch new PID if cache is invalid
     mlbb_pid = pidof(mlbb_proc);
     if (mlbb_pid != 0) {
-        log_encore(LOG_INFO, "Boosting MLBB process %s", mlbb_proc);
+        log_EronX_Tweaks(LOG_INFO, "Boosting MLBB process %s", mlbb_proc);
         return MLBB_RUNNING;
     }
 

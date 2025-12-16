@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "الملف الشخصي الحالي",
         "kernel": "النواة",
         "chipset": "مجموعة الشرائح",
@@ -18,7 +18,7 @@
         "save_changes": "حفظ التغييرات",
         "cancel_changes": "إلغاء التغييرات",
         "unauthorized_mod_title": "تم كشف تعديلات غير مصرح بها",
-        "unauthorized_mod_desc": "تلك الإضافة قد يكون تم التعديل فيها من طرف ثالث. من أجل حمايتك قم بتحميل النسخة الرسمية من موقع Encore Tweaks الرسمي.",
+        "unauthorized_mod_desc": "تلك الإضافة قد يكون تم التعديل فيها من طرف ثالث. من أجل حمايتك قم بتحميل النسخة الرسمية من موقع EronX Tweaks الرسمي.",
         "save_log_fail": "فشل في حفظ السجلات",
         "log_saved_title": "تم حفظ سجلات الإضافة",
         "log_saved_desc": "تم حقظ السجلات في {0}."
@@ -39,7 +39,7 @@
     },
     "support": {
         "title": "ادعمني",
-        "description": "Encore Tweaks مجاني وسيبقى دائمًا مجانيًا. لكن يمكنك إظهار دعمك من خلال التبرع."
+        "description": "EronX Tweaks مجاني وسيبقى دائمًا مجانيًا. لكن يمكنك إظهار دعمك من خلال التبرع."
     },
     "toast": {
         "reboot_to_apply": "قم بإعادة تشغيل جهازك لتطبيق التغييرات.",

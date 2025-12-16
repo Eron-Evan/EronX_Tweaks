@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,19 +16,19 @@
 
 if [ -n "$MMRL" ]; then
 	echo "- This action script is NOT intended to run on MMRL..."
-	echo "- Please open Encore Tweaks WebUI by clicking the module card."
+	echo "- Please open EronX Tweaks WebUI by clicking the module card."
 	exit 0
 fi
 
 if [ -n "$MAGISKTMP" ]; then
 	pm path io.github.a13e300.ksuwebui >/dev/null 2>&1 && {
 		echo "- Launching WebUI in KSUWebUIStandalone..."
-		am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "encore"
+		am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "EronX_Tweaks"
 		exit 0
 	}
 	pm path com.dergoogler.mmrl.webuix >/dev/null 2>&1 && {
 		echo "- Launching WebUI in WebUI X..."
-		am start -n "com.dergoogler.mmrl.webuix/.ui.activity.webui.WebUIActivity" -e MOD_ID "encore"
+		am start -n "com.dergoogler.mmrl.webuix/.ui.activity.webui.WebUIActivity" -e MOD_ID "EronX_Tweaks"
 		exit 0
 	}
 fi

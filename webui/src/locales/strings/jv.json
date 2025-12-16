@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "Profil Saiki",
         "kernel": "Kernel",
         "chipset": "Chipset",
@@ -18,7 +18,7 @@
         "save_changes": "Simpen Owahan",
         "cancel_changes": "Batalake Owahan",
         "unauthorized_mod_title": "Modifikasi tanpa wewenang dideteksi",
-        "unauthorized_mod_desc": "Modul iki bisa uga wis diowahi dening pihak katelu. Kanggo keamanan sampeyan, mangga download versi resmi saka situs web Encore Tweaks resmi.",
+        "unauthorized_mod_desc": "Modul iki bisa uga wis diowahi dening pihak katelu. Kanggo keamanan sampeyan, mangga download versi resmi saka situs web EronX Tweaks resmi.",
         "save_log_fail": "Ora bisa nyimpen log",
         "log_saved_title": "Log Modul Disimpen",
         "log_saved_desc": "Log disimpen ing {0}."
@@ -30,7 +30,7 @@
         "save_logs": "Simpen Log Modul"
     },
     "support": {
-        "description": "Encore Tweaks gratis lan bakal tetep gratis kanggo sapa wae. Nanging, sampeyan bisa nuduhake rasa peduli kanthi nyumbang.",
+        "description": "EronX Tweaks gratis lan bakal tetep gratis kanggo sapa wae. Nanging, sampeyan bisa nuduhake rasa peduli kanthi nyumbang.",
         "title": "Dukung Aku"
     },
     "settings": {

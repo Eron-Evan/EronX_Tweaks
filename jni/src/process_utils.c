@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 
 /***********************************************************************************
  * Function Name      : pidof
@@ -129,11 +129,11 @@ int uidof(pid_t pid) {
  *                      given process.
  ***********************************************************************************/
 void set_priority(const pid_t pid) {
-    log_encore(LOG_DEBUG, "Applying priority settings for PID %d", pid);
+    log_EronX_Tweaks(LOG_DEBUG, "Applying priority settings for PID %d", pid);
 
     if (setpriority(PRIO_PROCESS, pid, -20) == -1)
-        log_encore(LOG_ERROR, "Unable to set nice priority for %d", pid);
+        log_EronX_Tweaks(LOG_ERROR, "Unable to set nice priority for %d", pid);
 
     if (syscall(SYS_ioprio_set, 1, pid, (1 << 13) | 0) == -1)
-        log_encore(LOG_ERROR, "Unable to set IO priority for %d", pid);
+        log_EronX_Tweaks(LOG_ERROR, "Unable to set IO priority for %d", pid);
 }

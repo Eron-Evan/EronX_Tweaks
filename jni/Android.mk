@@ -1,12 +1,12 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := encored
+LOCAL_MODULE := EronX
 LOCAL_SRC_FILES := \
     main.c \
     src/cmd_utils.c \
-    src/encore_log.c \
-    src/encore_profiler.c \
+    src/EronX_Tweaks_log.c \
+    src/EronX_Tweaks_profiler.c \
     src/file_utils.c \
     src/process_utils.c \
     src/misc_utils.c \

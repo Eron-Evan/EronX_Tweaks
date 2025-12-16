@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
 # limitations under the License.
 #
 
-MODULE_CONFIG="/data/adb/.config/encore"
+MODULE_CONFIG="/data/adb/.config/EronX_Tweaks"
 CPUFREQ="/sys/devices/system/cpu/cpu0/cpufreq"
 
 # Clear old logs
-rm -f "$MODULE_CONFIG/encore.log"
+rm -f "$MODULE_CONFIG/EronX_Tweaks.log"
 
 # Parse Governor to use
 chmod 644 "$CPUFREQ/scaling_governor"
@@ -57,5 +57,5 @@ if [ -f "$ENABLE_PPM" ]; then
 	echo 1 >"$ENABLE_PPM"
 fi
 
-# Start Encore Daemon
-encored
+# Start EronX Daemon
+EronX

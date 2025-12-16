@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-rm -rf /data/adb/.config/encore
-need_gone="encored encore_profiler encore_utility encore_log"
+rm -rf /data/adb/.config/EronX_Tweaks
+need_gone="EronX EronX_Tweaks_profiler EronX_Tweaks_utility EronX_Tweaks_log"
 manager_paths="/data/adb/ap/bin /data/adb/ksu/bin"
 
 for dir in $manager_paths; do

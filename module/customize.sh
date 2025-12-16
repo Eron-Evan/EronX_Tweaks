@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 SKIPUNZIP=1
 SOC=0
 
-MODULE_CONFIG="/data/adb/.config/encore"
+MODULE_CONFIG="/data/adb/.config/EronX_Tweaks"
 
 make_node() {
 	[ ! -f "$2" ] && echo "$1" >"$2"
@@ -31,7 +31,7 @@ make_dir() {
 abort_unsupported_arch() {
 	ui_print "*********************************************************"
 	ui_print "! Unsupported Architecture: $ARCH"
-	ui_print "! Your CPU architecture is not supported by Encore Tweaks."
+	ui_print "! Your CPU architecture is not supported by EronX Tweaks."
 	abort "*********************************************************"
 }
 
@@ -125,8 +125,8 @@ extract "$ZIPFILE" 'module.prop' "$MODPATH"
 extract "$ZIPFILE" 'service.sh' "$MODPATH"
 extract "$ZIPFILE" 'uninstall.sh' "$MODPATH"
 extract "$ZIPFILE" 'action.sh' "$MODPATH"
-extract "$ZIPFILE" 'system/bin/encore_profiler' "$MODPATH"
-extract "$ZIPFILE" 'system/bin/encore_utility' "$MODPATH"
+extract "$ZIPFILE" 'system/bin/EronX_Tweaks_profiler' "$MODPATH"
+extract "$ZIPFILE" 'system/bin/EronX_Tweaks_utility' "$MODPATH"
 
 # Target architecture
 case $ARCH in
@@ -139,9 +139,9 @@ case $ARCH in
 esac
 
 # Extract executables
-extract "$ZIPFILE" "libs/$ARCH_TMP/encored" "$TMPDIR"
+extract "$ZIPFILE" "libs/$ARCH_TMP/EronX" "$TMPDIR"
 cp "$TMPDIR"/libs/"$ARCH_TMP"/* "$MODPATH/system/bin"
-ln -sf "$MODPATH/system/bin/encored" "$MODPATH/system/bin/encore_log"
+ln -sf "$MODPATH/system/bin/EronX" "$MODPATH/system/bin/EronX_Tweaks_log"
 rm -rf "$TMPDIR/libs"
 
 if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
@@ -152,14 +152,14 @@ if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
 	ui_print "- KSU/AP Detected, skipping module mount (skip_mount)"
 	# symlink ourselves on $PATH
 	manager_paths="/data/adb/ap/bin /data/adb/ksu/bin"
-	BIN_PATH="/data/adb/modules/encore/system/bin"
+	BIN_PATH="/data/adb/modules/EronX_Tweaks/system/bin"
 	for dir in $manager_paths; do
 		[ -d "$dir" ] && {
 			ui_print "- Creating symlink in $dir"
-			ln -sf "$BIN_PATH/encored" "$dir/encored"
-			ln -sf "$BIN_PATH/encored" "$dir/encore_log"
-			ln -sf "$BIN_PATH/encore_profiler" "$dir/encore_profiler"
-			ln -sf "$BIN_PATH/encore_utility" "$dir/encore_utility"
+			ln -sf "$BIN_PATH/EronX" "$dir/EronX"
+			ln -sf "$BIN_PATH/EronX" "$dir/EronX_Tweaks_log"
+			ln -sf "$BIN_PATH/EronX_Tweaks_profiler" "$dir/EronX_Tweaks_profiler"
+			ln -sf "$BIN_PATH/EronX_Tweaks_utility" "$dir/EronX_Tweaks_utility"
 		}
 	done
 fi
@@ -169,11 +169,11 @@ ui_print "- Extracting webroot"
 unzip -o "$ZIPFILE" "webroot/*" -d "$MODPATH" >&2
 
 # Mitigate root detection
-[ -d /data/encore ] && rm -rf /data/encore
-[ -f /data/local/tmp/encore_logo.png ] && rm -f /data/local/tmp/encore_logo.png
+[ -d /data/EronX_Tweaks ] && rm -rf /data/EronX_Tweaks
+[ -f /data/local/tmp/EronX_Tweaks_logo.png ] && rm -f /data/local/tmp/EronX_Tweaks_logo.png
 
 # Set configs
-ui_print "- Encore Tweaks configuration setup"
+ui_print "- EronX Tweaks configuration setup"
 make_dir "$MODULE_CONFIG"
 make_node 0 "$MODULE_CONFIG/lite_mode"
 make_node 0 "$MODULE_CONFIG/dnd_gameplay"
@@ -215,6 +215,6 @@ case "$((RANDOM % 8 + 1))" in
 4) ui_print "- Adventure? Let's go!" ;;
 5) ui_print "- Hero Takes the Stage!" ;;
 6) ui_print "- Woolies Save the World!" ;;
-7) ui_print "- How much people will let you live for Encore?" ;;
+7) ui_print "- How much people will let you live for EronX?" ;;
 8) ui_print "- Wen Donate?" ;;
 esac

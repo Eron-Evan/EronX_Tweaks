@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,17 @@
  */
 
 import { exec, toast } from 'kernelsu';
-import encoreHappy from '/encore_happy.avif';
-import encoreSleeping from '/encore_sleeping.avif';
+import EronX_TweaksHappy from '/EronX_Tweaks_happy.avif';
+import EronX_TweaksSleeping from '/EronX_Tweaks_sleeping.avif';
 
-const configPath = '/data/adb/.config/encore';
-const modPath = '/data/adb/modules/encore';
-const binPath = '/data/adb/modules/encore/system/bin';
-const officialWebsite = 'https://encore.rem01gaming.dev/';
+const configPath = '/data/adb/.config/EronX_Tweaks';
+const modPath = '/data/adb/modules/EronX_Tweaks';
+const binPath = '/data/adb/modules/EronX_Tweaks/system/bin';
+const officialWebsite = 'https://t.me/eronX_projects';
 const donateUrl = 'https://t.me/rem01schannel/670';
 
 // WebUI X API
-const moduleInterface = window.$encore;
+const moduleInterface = window.$EronX_Tweaks;
 const fileInterface = window.$EnFile;
 
 /* ======================== UTILITIES ======================== */
@@ -42,7 +42,7 @@ const showCustomModal = (title, msg) => {
 };
 
 const saveLog = async () => {
-  const output = await runCommand(`${binPath}/encore_utility save_logs`);
+  const output = await runCommand(`${binPath}/EronX_Tweaks_utility save_logs`);
   if (output.error) {
     const save_log_fail = getTranslation("modal.save_log_fail");
     showCustomModal(save_log_fail, output.error);
@@ -153,7 +153,7 @@ const getCurrentProfile = async () => {
       break;
     }
     
-  document.getElementById('encore_profile').textContent = profile;
+  document.getElementById('EronX_Tweaks_profile').textContent = profile;
 };
 
 const getChipset = async () => {
@@ -219,20 +219,20 @@ const getAndroidSDK = async () => {
 /* ======================== SERVICE MANAGEMENT ======================== */
 const getServiceState = async () => {
   const status = document.getElementById('daemon_status');
-  const image = document.getElementById('encore_logo');
+  const image = document.getElementById('EronX_Tweaks_logo');
   const pidElement = document.getElementById('daemon_pid');
 
-  const pid = await runCommand('/system/bin/toybox pidof encored || echo null');
+  const pid = await runCommand('/system/bin/toybox pidof EronX || echo null');
   pidElement.textContent = `Daemon PID: ${pid}`;
 
   if (pid === "null") {
     status.textContent = "Stopped 💤";
-    image.src = encoreSleeping;
+    image.src = EronX_TweaksSleeping;
     return;
   }
 
   status.textContent = "Working ✨";
-  image.src = encoreHappy;
+  image.src = EronX_TweaksHappy;
 };
 
 /* ======================== CONFIGURATION ======================== */
@@ -278,9 +278,9 @@ const changeCPUGovernor = async (governor, config) => {
   }
 
   if (config === "powersave_cpu_gov") {
-    await runCommand(`[ "$(<${configPath}/current_profile)" -eq 3 ] && encore_utility change_cpu_gov ${governor}`);
+    await runCommand(`[ "$(<${configPath}/current_profile)" -eq 3 ] && EronX_Tweaks_utility change_cpu_gov ${governor}`);
   } else if (config === "custom_default_cpu_gov") {
-    await runCommand(`[ "$(<${configPath}/current_profile)" -eq 2 ] && encore_utility change_cpu_gov ${governor}`);
+    await runCommand(`[ "$(<${configPath}/current_profile)" -eq 2 ] && EronX_Tweaks_utility change_cpu_gov ${governor}`);
   }
 };
 
@@ -355,7 +355,7 @@ document.getElementById('edit_gamelist_btn').addEventListener('click', () => {
 document.getElementById('save_gamelist_btn').addEventListener('click', saveGamelist);
 document.getElementById('create_shortcut_btn').addEventListener('click', createShortcut);
 document.getElementById('donate_btn').addEventListener('click', () => openWebsite(donateUrl));
-document.getElementById('encore_logo').addEventListener('click', () => openWebsite(officialWebsite));
+document.getElementById('EronX_Tweaks_logo').addEventListener('click', () => openWebsite(officialWebsite));
 
 document.querySelectorAll('.info-btn').forEach(btn => {
   btn.addEventListener('click', function() {

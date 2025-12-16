@@ -1,6 +1,6 @@
 #!/system/bin/sh
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 ###################################
 
 # Config dir
-MODULE_CONFIG="/data/adb/.config/encore"
+MODULE_CONFIG="/data/adb/.config/EronX_Tweaks"
 
 # SoC recognition
 SOC=$(<$MODULE_CONFIG/soc_recognition)
@@ -649,7 +649,7 @@ perfcommon() {
 	sync
 
 	# Push Notification
-	su -lp 2000 -c "/system/bin/cmd notification post -t 'Encore Tweaks' 'encore' 'Tweaks successfully applied' </dev/null 2>&1 | cat" >/dev/null
+	su -lp 2000 -c "/system/bin/cmd notification post -t 'EronX Tweaks' 'EronX_Tweaks' 'Tweaks successfully applied' </dev/null 2>&1 | cat" >/dev/null
 
 	# I/O Tweaks
 	for dir in /sys/block/*; do

@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "当前配置",
         "kernel": "内核",
         "chipset": "芯片组",
@@ -23,7 +23,7 @@
     },
     "support": {
         "title": "支持我",
-        "description": "Encore Tweaks 永久免费，若您愿意，可通过捐赠支持开发。"
+        "description": "EronX Tweaks 永久免费，若您愿意，可通过捐赠支持开发。"
     },
     "modal": {
         "dnd_title": "勿扰模式",
@@ -38,7 +38,7 @@
         "cancel_changes": "取消更改",
         "save_log_fail": "无法保存日志",
         "unauthorized_mod_title": "检测到未经授权的修改",
-        "unauthorized_mod_desc": "该模块可能已被第三方修改。为了您的安全，请从Encore Tweaks官方网站下载官方版本。",
+        "unauthorized_mod_desc": "该模块可能已被第三方修改。为了您的安全，请从EronX Tweaks官方网站下载官方版本。",
         "log_saved_desc": "日志已保存至 {0}。",
         "log_saved_title": "模块日志已保存"
     },

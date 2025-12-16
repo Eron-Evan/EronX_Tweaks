@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "kernel": "Kernel",
         "profile": "Cấu hình hiện tại",
         "chipset": "Chipset",
@@ -19,7 +19,7 @@
         "cancel_changes": "Hủy thay đổi",
         "unauthorized_mod_title": "Đã phát hiện can thiệp bên ngoài",
         "save_log_fail": "Không thể lưu nhật kí",
-        "unauthorized_mod_desc": "Module này có thể đã bị chỉnh sửa bởi một bên thứ ba. Vì an toàn của bạn, hãy tải bản chính thức từ trang web chính thức của Encore Tweaks.",
+        "unauthorized_mod_desc": "Module này có thể đã bị chỉnh sửa bởi một bên thứ ba. Vì an toàn của bạn, hãy tải bản chính thức từ trang web chính thức của EronX Tweaks.",
         "log_saved_desc": "Nhật kí được lưu tại {0}."
     },
     "actions": {
@@ -37,7 +37,7 @@
         "powersave_cpu_gov": "Bộ điều chỉnh CPU tiết kiệm năng lượng"
     },
     "support": {
-        "description": "Encore Tweaks luôn miễn phí cho tất cả mọi người. Tuy nhiên, bạn có thể ủng hộ tôi bằng cách quyên góp.",
+        "description": "EronX Tweaks luôn miễn phí cho tất cả mọi người. Tuy nhiên, bạn có thể ủng hộ tôi bằng cách quyên góp.",
         "title": "Hỗ trợ tôi"
     },
     "toast": {

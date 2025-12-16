@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 
 /***********************************************************************************
  * Function Name      : execute_command
@@ -32,7 +32,7 @@ char* execute_command(const char* format, ...) {
 
     int pipefd[2];
     if (pipe(pipefd) == -1) [[clang::unlikely]] {
-        log_encore(LOG_ERROR, "pipe failed in execute_command()");
+        log_EronX_Tweaks(LOG_ERROR, "pipe failed in execute_command()");
         return NULL;
     }
 
@@ -40,7 +40,7 @@ char* execute_command(const char* format, ...) {
     if (pid == -1) [[clang::unlikely]] {
         close(pipefd[0]);
         close(pipefd[1]);
-        log_encore(LOG_ERROR, "fork failed in execute_command()");
+        log_EronX_Tweaks(LOG_ERROR, "fork failed in execute_command()");
         return NULL;
     }
 
@@ -104,7 +104,7 @@ char* execute_direct(const char* path, const char* arg0, ...) {
 
     int pipefd[2];
     if (pipe(pipefd) == -1) [[clang::unlikely]] {
-        log_encore(LOG_ERROR, "pipe failed in execute_direct()");
+        log_EronX_Tweaks(LOG_ERROR, "pipe failed in execute_direct()");
         return NULL;
     }
 
@@ -112,7 +112,7 @@ char* execute_direct(const char* path, const char* arg0, ...) {
     if (pid == -1) [[clang::unlikely]] {
         close(pipefd[0]);
         close(pipefd[1]);
-        log_encore(LOG_ERROR, "fork failed in execute_direct()");
+        log_EronX_Tweaks(LOG_ERROR, "fork failed in execute_direct()");
         return NULL;
     }
 

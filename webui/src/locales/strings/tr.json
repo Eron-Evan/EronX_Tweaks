@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "Geçerli Profil",
         "kernel": "Çekirdek",
         "chipset": "Yonga Seti",
@@ -22,7 +22,7 @@
     },
     "support": {
         "title": "Beni Destekle",
-        "description": "Encore Tweaks, sizler ve herkes için her zaman ücretsizdir ve ücretsiz kalacaktır. Ancak, bir bağış yaparak bana destek olduğunuzu gösterebilirsiniz."
+        "description": "EronX Tweaks, sizler ve herkes için her zaman ücretsizdir ve ücretsiz kalacaktır. Ancak, bir bağış yaparak bana destek olduğunuzu gösterebilirsiniz."
     },
     "toast": {
         "reboot_to_apply": "Değişiklikleri uygulamak için cihazınızı yeniden başlatın.",
@@ -39,7 +39,7 @@
         "shortcut_unavailable_title": "Kısayol Kullanılamıyor",
         "shortcut_unavailable_desc": "WebUI kısayol API'si yalnızca WebUI X motorunda kullanılabilir. Lütfen MMRL veya KernelSU Next gibi WebUI X destekli bir yönetici kullanın.",
         "unauthorized_mod_title": "Yetkisiz Değişiklik Tespit Edildi",
-        "unauthorized_mod_desc": "Bu modül, üçüncü bir taraf tarafından değiştirilmiş olabilir. Güvenliğiniz için lütfen resmi Encore Tweaks web sitesinden resmi sürümü indirin.",
+        "unauthorized_mod_desc": "Bu modül, üçüncü bir taraf tarafından değiştirilmiş olabilir. Güvenliğiniz için lütfen resmi EronX Tweaks web sitesinden resmi sürümü indirin.",
         "edit_gamelist_title": "Oyun Listesini Düzenle",
         "edit_gamelist_desc": "Burada listelenen oyunlar veya uygulamalar başlatıldığında performans profili etkinleştirilecektir.",
         "save_changes": "Değişiklikleri Kaydet",

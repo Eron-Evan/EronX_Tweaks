@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 #include <libgen.h>
 
 char* gamestart = NULL;
@@ -29,9 +29,9 @@ int main(int argc, char* argv[]) {
 
     // Expose logging interface for other modules
     char* base_name = basename(argv[0]);
-    if (strcmp(base_name, "encore_log") == 0) {
+    if (strcmp(base_name, "EronX_Tweaks_log") == 0) {
         if (argc < 3) {
-            fprintf(stderr, "Usage: encore_log <TAG> <LEVEL> <MESSAGE>\n");
+            fprintf(stderr, "Usage: EronX_Tweaks_log <TAG> <LEVEL> <MESSAGE>\n");
             fprintf(stderr, "Levels: 0=DEBUG, 1=INFO, 2=WARN, 3=ERROR, 4=FATAL\n");
             return EXIT_FAILURE;
         }
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
     // Make sure only one instance is running
     if (create_lock_file() != 0) {
-        fprintf(stderr, "\033[31mERROR:\033[0m Another instance of Encore Daemon is already running!\n");
+        fprintf(stderr, "\033[31mERROR:\033[0m Another instance of EronX Daemon is already running!\n");
         exit(EXIT_FAILURE);
     }
 
@@ -77,13 +77,13 @@ int main(int argc, char* argv[]) {
     // Handle missing Gamelist
     if (access(GAMELIST, F_OK) != 0) {
         fprintf(stderr, "\033[31mFATAL ERROR:\033[0m Unable to access Gamelist, either has been removed or moved.\n");
-        log_encore(LOG_FATAL, "Critical file not found (%s)", GAMELIST);
+        log_EronX_Tweaks(LOG_FATAL, "Critical file not found (%s)", GAMELIST);
         exit(EXIT_FAILURE);
     }
 
     // Daemonize service
     if (daemon(0, 0)) {
-        log_encore(LOG_FATAL, "Unable to daemonize service");
+        log_EronX_Tweaks(LOG_FATAL, "Unable to daemonize service");
         exit(EXIT_FAILURE);
     }
 
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
     MLBBState mlbb_is_running = MLBB_NOT_RUNNING;
     ProfileMode cur_mode = PERFCOMMON;
 
-    log_encore(LOG_INFO, "Daemon started as PID %d", getpid());
+    log_EronX_Tweaks(LOG_INFO, "Daemon started as PID %d", getpid());
     run_profiler(PERFCOMMON); // exec perfcommon
 
     while (1) {
@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
 
         // Handle case when module gets updated
         if (access(MODULE_UPDATE, F_OK) == 0) [[clang::unlikely]] {
-            log_encore(LOG_INFO, "Module update detected, exiting.");
+            log_EronX_Tweaks(LOG_INFO, "Module update detected, exiting.");
             notify("Please reboot your device to complete module update.");
             break;
         }
@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
         if (!gamestart) {
             gamestart = get_gamestart();
         } else if (game_pid != 0 && kill(game_pid, 0) == -1) [[clang::unlikely]] {
-            log_encore(LOG_INFO, "Game %s exited, resetting profile...", gamestart);
+            log_EronX_Tweaks(LOG_INFO, "Game %s exited, resetting profile...", gamestart);
             game_pid = 0;
             free(gamestart);
             gamestart = get_gamestart();
@@ -136,7 +136,7 @@ int main(int argc, char* argv[]) {
             // Handle weird behavior of MLBB
             game_pid = (mlbb_is_running == MLBB_RUNNING) ? mlbb_pid : pidof(gamestart);
             if (game_pid == 0) [[clang::unlikely]] {
-                log_encore(LOG_ERROR, "Unable to fetch PID of %s", gamestart);
+                log_EronX_Tweaks(LOG_ERROR, "Unable to fetch PID of %s", gamestart);
                 free(gamestart);
                 gamestart = NULL;
                 continue;
@@ -144,7 +144,7 @@ int main(int argc, char* argv[]) {
 
             cur_mode = PERFORMANCE_PROFILE;
             need_profile_checkup = false;
-            log_encore(LOG_INFO, "Applying performance profile for %s", gamestart);
+            log_EronX_Tweaks(LOG_INFO, "Applying performance profile for %s", gamestart);
             run_profiler(PERFORMANCE_PROFILE);
             set_priority(game_pid);
         } else if (get_low_power_state()) {
@@ -154,7 +154,7 @@ int main(int argc, char* argv[]) {
 
             cur_mode = POWERSAVE_PROFILE;
             need_profile_checkup = false;
-            log_encore(LOG_INFO, "Applying powersave profile");
+            log_EronX_Tweaks(LOG_INFO, "Applying powersave profile");
             run_profiler(POWERSAVE_PROFILE);
         } else {
             // Bail out if we already on normal profile
@@ -163,7 +163,7 @@ int main(int argc, char* argv[]) {
 
             cur_mode = NORMAL_PROFILE;
             need_profile_checkup = false;
-            log_encore(LOG_INFO, "Applying normal profile");
+            log_EronX_Tweaks(LOG_INFO, "Applying normal profile");
             run_profiler(NORMAL_PROFILE);
         }
     }

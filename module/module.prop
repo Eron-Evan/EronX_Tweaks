@@ -1,8 +1,8 @@
-id=encore
-name=Encore Tweaks
+id=EronX_Tweaks
+name=EronX Tweaks
 version=
 versionCode=
-author=Rem01Gaming
-description=Special performance module for your Device.
-updateJson=https://encore.rem01gaming.dev/api/update.json
-banner=https://encore.rem01gaming.dev/ogp/default.webp
+author=ERON
+description=Core-level performance tuning for speed and stability.
+updateJson=https://raw.githubusercontent.com/Eron-Evan/EronX_Tweaks/refs/heads/EronX/website/docs/public/api/update.json
+banner=https://raw.githubusercontent.com/Eron-Evan/EronX_Tweaks/refs/heads/v4.6/website/docs/public/ogp/default.webp

@@ -1,6 +1,6 @@
 #!/system/bin/sh
 #
-# Copyright (C) 2024-2025 Rem01Gaming
+# Copyright (C) 2024-2025 ERON
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 #
 
 # Config dir
-MODULE_CONFIG="/data/adb/.config/encore"
+MODULE_CONFIG="/data/adb/.config/EronX_Tweaks"
 
 change_cpu_gov() {
 	chmod 644 /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
@@ -35,7 +35,7 @@ set_dnd() {
 
 save_logs() {
 	[ ! -d /sdcard/Download ] && mkdir /sdcard/Download
-	log_file="/sdcard/Download/encore_bugreport_$(date +"%Y-%m-%d_%H_%M").txt"
+	log_file="/sdcard/Download/EronX_Tweaks_bugreport_$(date +"%Y-%m-%d_%H_%M").txt"
 	SOC="Unknown"
 
 	case $(<$MODULE_CONFIG/soc_recognition) in
@@ -52,16 +52,16 @@ save_logs() {
 	echo "$log_file"
 	cat <<EOF >"$log_file"
 *****************************************************
-Encore Tweaks Log
+EronX Tweaks Log
 
-Module Version: $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/encore/module.prop)
+Module Version: $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/EronX_Tweaks/module.prop)
 Chipset: $SOC $(getprop ro.board.platform)
 Fingerprint: $(getprop ro.build.fingerprint)
 Android SDK: $(getprop ro.build.version.sdk)
 Kernel: $(uname -r -m)
 *****************************************************
 
-$(<$MODULE_CONFIG/encore.log)
+$(<$MODULE_CONFIG/EronX_Tweaks.log)
 EOF
 }
 
@@ -87,12 +87,12 @@ logcat() {
 
 	# Header
 	echo -e "\e[1;36m┌────────────────────────────────────────────┐"
-	echo -e "│          \e[1;37mEncore Tweaks Log Viewer\e[1;36m          │"
+	echo -e "│          \e[1;37mEronX Tweaks Log Viewer\e[1;36m          │"
 	echo -e "└────────────────────────────────────────────┘\e[0m"
 
 	# Info block
 	echo -e "
-\e[1;32mModule Version:\e[0m $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/encore/module.prop)
+\e[1;32mModule Version:\e[0m $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/EronX_Tweaks/module.prop)
 \e[1;32mChipset:\e[0m        $SOC $(getprop ro.board.platform)
 \e[1;32mFingerprint:\e[0m    $(getprop ro.build.fingerprint)
 \e[1;32mAndroid SDK:\e[0m    $(getprop ro.build.version.sdk)
@@ -102,7 +102,7 @@ logcat() {
 "
 
 	# Tail log
-	tail -f $MODULE_CONFIG/encore.log | while read -r line; do
+	tail -f $MODULE_CONFIG/EronX_Tweaks.log | while read -r line; do
 		timestamp="${line:0:23}"
 		level_char=$(echo "$line" | awk '{print $3}')
 		msg="${line:24}"

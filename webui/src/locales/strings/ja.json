@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "現在のプロファイル",
         "kernel": "カーネル",
         "chipset": "チップセット",
@@ -22,7 +22,7 @@
     },
     "support": {
         "title": "サポートする",
-        "description": "Encore Tweaks は無償で提供しています。これからもずっとです。ですが、寄付をすることで開発者への貢献に繋がります。"
+        "description": "EronX Tweaks は無償で提供しています。これからもずっとです。ですが、寄付をすることで開発者への貢献に繋がります。"
     },
     "modal": {
         "dnd_title": "サイレントモード",
@@ -36,7 +36,7 @@
         "save_changes": "変更を保存",
         "cancel_changes": "変更をキャンセル",
         "unauthorized_mod_title": "不正な変更が検出されました",
-        "unauthorized_mod_desc": "このモジュールは第三者によって改変されている可能性があります。安全性の確保のため、Encore Tweaks の公式ウェブサイトから公式バージョンをダウンロードしてください。",
+        "unauthorized_mod_desc": "このモジュールは第三者によって改変されている可能性があります。安全性の確保のため、EronX Tweaks の公式ウェブサイトから公式バージョンをダウンロードしてください。",
         "save_log_fail": "ログを保存できません",
         "log_saved_desc": "ログは「{0}」に保存されました。",
         "log_saved_title": "モジュールのログを保存しました"

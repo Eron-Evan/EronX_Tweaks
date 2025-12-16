@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "Perfil Atual",
         "kernel": "Kernel",
         "chipset": "Chipset",
@@ -23,7 +23,7 @@
     },
     "support": {
         "title": "Apoie-me",
-        "description": "O Encore Tweaks é e sempre será gratuito para si e todos. No entanto, pode demonstrar o seu apoio fazendo uma doação."
+        "description": "O EronX Tweaks é e sempre será gratuito para si e todos. No entanto, pode demonstrar o seu apoio fazendo uma doação."
     },
     "modal": {
         "dnd_title": "Não perturbar",
@@ -37,7 +37,7 @@
         "save_changes": "Gravar alterações",
         "cancel_changes": "Cancelar alterações",
         "unauthorized_mod_title": "Modificação não autorizada detetada",
-        "unauthorized_mod_desc": "Este módulo pode ter sido modificado por outrem. Para a sua segurança, descarregue a versão oficial através do site Encore Tweaks.",
+        "unauthorized_mod_desc": "Este módulo pode ter sido modificado por outrem. Para a sua segurança, descarregue a versão oficial através do site EronX Tweaks.",
         "save_log_fail": "Não foi possível gravar os logs",
         "log_saved_desc": "Logs gravados em {0}.",
         "log_saved_title": "Registos gravados"

@@ -1,6 +1,6 @@
 {
     "common": {
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "profile": "Profil saat ini",
         "kernel": "Kernel",
         "chipset": "Chipset",
@@ -23,7 +23,7 @@
     },
     "support": {
         "title": "Dukung Saya",
-        "description": "Encore Tweaks akan selalu gratis untuk semua orang. Namun Anda dapat menunjukkan kepedulian Anda dengan memberikan donasi."
+        "description": "EronX Tweaks akan selalu gratis untuk semua orang. Namun Anda dapat menunjukkan kepedulian Anda dengan memberikan donasi."
     },
     "toast": {
         "has_shortcut": "Pintasan sudah ada.",
@@ -41,7 +41,7 @@
         "edit_gamelist_desc": "Profil kinerja akan diaktifkan ketika salah satu permainan dan aplikasi yang tercantum di sini diluncurkan.",
         "save_changes": "Simpan Perubahan",
         "cancel_changes": "Batalkan Perubahan",
-        "unauthorized_mod_desc": "Modul ini mungkin telah dimodifikasi oleh pihak ketiga. Demi keamanan Anda, silakan unduh versi resmi dari situs web resmi Encore Tweaks.",
+        "unauthorized_mod_desc": "Modul ini mungkin telah dimodifikasi oleh pihak ketiga. Demi keamanan Anda, silakan unduh versi resmi dari situs web resmi EronX Tweaks.",
         "save_log_fail": "Tidak dapat menyimpan log",
         "unauthorized_mod_title": "Modifikasi tidak sah terdeteksi",
         "log_saved_title": "Log Modul Disimpan",

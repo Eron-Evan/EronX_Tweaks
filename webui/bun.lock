@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "encore-tweaks",
+      "name": "EronX_Tweaks-tweaks",
       "dependencies": {
         "kernelsu": "^1.0.6",
       },

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Rem01Gaming
+ * Copyright (C) 2024-2025 ERON
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <encore.h>
+#include <EronX_Tweaks.h>
 
 /***********************************************************************************
  * Function Name      : trim_newline
@@ -45,7 +45,7 @@ void notify(const char* message) {
         systemv("su -lp 2000 -c \"/system/bin/cmd notification post -t '%s' '%s' '%s'\" >/dev/null", NOTIFY_TITLE, LOG_TAG, message);
 
     if (exit != 0) [[clang::unlikely]] {
-        log_encore(LOG_ERROR, "Unable to post push notification, message: %s", message);
+        log_EronX_Tweaks(LOG_ERROR, "Unable to post push notification, message: %s", message);
     }
 }
 
@@ -93,10 +93,10 @@ char* timern(void) {
 [[noreturn]] void sighandler(const int signal) {
     switch (signal) {
     case SIGTERM:
-        log_encore(LOG_INFO, "Received SIGTERM, exiting.");
+        log_EronX_Tweaks(LOG_INFO, "Received SIGTERM, exiting.");
         break;
     case SIGINT:
-        log_encore(LOG_INFO, "Received SIGINT, exiting.");
+        log_EronX_Tweaks(LOG_INFO, "Received SIGINT, exiting.");
         break;
     }
 
@@ -114,7 +114,7 @@ void check_dumpsys_sanity(void) {
     FILE* file = fopen("/system/bin/dumpsys", "rb");
     if (!file) {
         fprintf(stderr, "\033[31mFATAL ERROR:\033[0m /system/bin/dumpsys: %s\n", strerror(errno));
-        log_encore(LOG_FATAL, "/system/bin/dumpsys: %s", strerror(errno));
+        log_EronX_Tweaks(LOG_FATAL, "/system/bin/dumpsys: %s", strerror(errno));
         goto insane;
     }
 
@@ -122,12 +122,12 @@ void check_dumpsys_sanity(void) {
     if (ch == EOF) {
         if (feof(file)) {
             fprintf(stderr, "\033[31mFATAL ERROR:\033[0m /system/bin/dumpsys was tampered by kill logger module\n");
-            log_encore(LOG_FATAL, "/system/bin/dumpsys was tampered by kill logger module");
+            log_EronX_Tweaks(LOG_FATAL, "/system/bin/dumpsys was tampered by kill logger module");
             goto insane;
         }
 
         fprintf(stderr, "\033[31mFATAL ERROR:\033[0m /system/bin/dumpsys: %s\n", strerror(errno));
-        log_encore(LOG_FATAL, "/system/bin/dumpsys: %s", strerror(errno));
+        log_EronX_Tweaks(LOG_FATAL, "/system/bin/dumpsys: %s", strerror(errno));
         goto insane;
     }
 
@@ -147,18 +147,18 @@ insane:
  * Description        : Checks if the module renamed/modified by 3rd party.
  ***********************************************************************************/
 void is_kanged(void) {
-    if (systemv("grep -q '^name=Encore Tweaks$' %s", MODULE_PROP) != 0) [[clang::unlikely]] {
+    if (systemv("grep -q '^name=EronX Tweaks$' %s", MODULE_PROP) != 0) [[clang::unlikely]] {
         goto doorprize;
     }
 
-    if (systemv("grep -q '^author=Rem01Gaming$' %s", MODULE_PROP) != 0) [[clang::unlikely]] {
+    if (systemv("grep -q '^author=ERON$' %s", MODULE_PROP) != 0) [[clang::unlikely]] {
         goto doorprize;
     }
 
     return;
 
 doorprize:
-    log_encore(LOG_FATAL, "Module modified by 3rd party, exiting.");
+    log_EronX_Tweaks(LOG_FATAL, "Module modified by 3rd party, exiting.");
     notify("Trying to rename me?");
     exit(EXIT_FAILURE);
 }

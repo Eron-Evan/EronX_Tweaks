@@ -4,4 +4,4 @@ User-agent: *
 Disallow: /download/version/*
 Allow: /
 
-Sitemap: https://encore.rem01gaming.dev/sitemap.xml
+Sitemap: https://EronX_Tweaks.rem01gaming.dev/sitemap.xml

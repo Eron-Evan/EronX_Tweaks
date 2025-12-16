@@ -2,25 +2,25 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Encore Tweaks",
+  title: "EronX Tweaks",
   lang: "en-US",
   ignoreDeadLinks: true,
   cleanUrls: true,
 
   sitemap: {
-    hostname: 'https://encore.rem01gaming.dev'
+    hostname: 'https://EronX_Tweaks.rem01gaming.dev'
   },
 
   head: [
     ['link', { rel: "icon", type: "image/png", href: "/favicon.png", sizes: "64x64"}],
     ['link', { rel: "icon", type: "image/png", href: "/android-chrome.png", sizes: "192x192"}],
     ['link', { rel: "apple-touch-icon", type: "image/png", href: "/apple-touch-icon.png", sizes: "180x180"}],
-    ['meta', { name: "hostname", content: "encore.rem01gaming.dev"}],
-    ['meta', { name: "expected-hostname", content: "encore.rem01gaming.dev"}],
-    ['meta', { name: "keywords", content: "Encore Tweaks, Tweak, Magisk Module, apk, module, performance module, Gaming, Android, Module magisk, gaming performance" }],
+    ['meta', { name: "hostname", content: "EronX_Tweaks.rem01gaming.dev"}],
+    ['meta', { name: "expected-hostname", content: "EronX_Tweaks.rem01gaming.dev"}],
+    ['meta', { name: "keywords", content: "EronX Tweaks, Tweak, Magisk Module, apk, module, performance module, Gaming, Android, Module magisk, gaming performance" }],
     ['meta', { property: "og:type", content: "website"}],
     ['meta', { property: "og:locale", content: "en-US"}],
-    ['meta', { property: "og:site_name", content: "Encore Tweaks"}],
+    ['meta', { property: "og:site_name", content: "EronX Tweaks"}],
     ['meta', { property: "twitter:card", content: "summary_large_image"}],
 
     // Google Analytics
@@ -52,12 +52,12 @@ export default defineConfig({
     // Add dynamic meta tags
     pageData.frontmatter.head.push(
       ['link', { rel: "canonical", href: canonicalUrl }],
-      ['meta', { property: "og:title", content: pageData.frontmatter.layout === 'home' ? pageData.title : `${pageData.title} | Encore Tweaks` }],
+      ['meta', { property: "og:title", content: pageData.frontmatter.layout === 'home' ? pageData.title : `${pageData.title} | EronX Tweaks` }],
       ['meta', { property: "og:url", content: canonicalUrl }],
       ['meta', { property: "og:image", content: ogImage }],
       ['meta', { property: "og:description", content: pageData.description }],
       ['meta', { property: "twitter:image", content: ogImage }],
-      ['meta', { property: "twitter:title", content: pageData.frontmatter.layout === 'home' ? pageData.title : `${pageData.title} | Encore Tweaks` }],
+      ['meta', { property: "twitter:title", content: pageData.frontmatter.layout === 'home' ? pageData.title : `${pageData.title} | EronX Tweaks` }],
       ['meta', { property: "twitter:description", content: pageData.description }]
     );
 
@@ -69,9 +69,9 @@ export default defineConfig({
         JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Encore Tweaks",
-          "alternateName": "Encore Tweak",
-          "url": "https://encore.rem01gaming.dev/"
+          "name": "EronX Tweaks",
+          "alternateName": "EronX Tweak",
+          "url": "https://EronX_Tweaks.rem01gaming.dev/"
         })
       ]);
     }
@@ -79,12 +79,12 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide/what-is-encore-tweaks' },
+      { text: 'Guide', link: '/guide/what-is-EronX_Tweaks-tweaks' },
       {
         text: 'Donate',
         items: [
-          { text: 'Saweria', link: 'https://saweria.co/Rem01Gaming' },
-          { text: 'Sociabuzz', link: 'https://sociabuzz.com/Rem01Gaming' }
+          { text: 'Saweria', link: 'https://saweria.co/ERON' },
+          { text: 'Sociabuzz', link: 'https://sociabuzz.com/ERON' }
         ]
       },
       { text: 'Download', link: '/download' }
@@ -94,17 +94,17 @@ export default defineConfig({
       {
         text: 'Guide',
         items: [
-          { text: 'What is Encore Tweaks?', link: '/guide/what-is-encore-tweaks' },
+          { text: 'What is EronX Tweaks?', link: '/guide/what-is-EronX_Tweaks-tweaks' },
           { text: 'Module WebUI and Configuration', link: '/guide/webui-and-configuration' },
-          { text: 'Encore Tweaks Addon', link: '/guide/addon' },
+          { text: 'EronX Tweaks Addon', link: '/guide/addon' },
           { text: 'FAQ', link: '/guide/faq' }
         ]
       },
       {
         text: 'Donate',
         items: [
-          { text: 'Saweria', link: 'https://saweria.co/Rem01Gaming' },
-          { text: 'Buymeacoffee', link: 'https://www.buymeacoffee.com/Rem01Gaming' }
+          { text: 'Saweria', link: 'https://saweria.co/ERON' },
+          { text: 'Buymeacoffee', link: 'https://www.buymeacoffee.com/ERON' }
         ]
       },
       { text: 'Download', link: '/download' }
@@ -136,16 +136,16 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the Apache License 2.0.',
-      copyright: 'Copyright &copy 2024-present Rem01Gaming'
+      copyright: 'Copyright &copy 2024-present ERON'
     },
     
     editLink: {
-        pattern: 'https://github.com/Rem01Gaming/encore/edit/main/website/docs/:path',
+        pattern: 'https://github.com/ERON/EronX_Tweaks/edit/main/website/docs/:path',
         text: 'Edit this page in GitHub'
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Rem01Gaming/encore', ariaLabel: 'GitHub' }
+      { icon: 'github', link: 'https://github.com/ERON/EronX_Tweaks', ariaLabel: 'GitHub' }
     ]
   }
 })

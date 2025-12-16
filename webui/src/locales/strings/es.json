@@ -2,7 +2,7 @@
     "common": {
         "chipset": "Chipset",
         "profile": "Perfil Actual",
-        "module": "Encore Tweaks",
+        "module": "EronX Tweaks",
         "kernel": "Núcleo del sistema",
         "androidSDK": "Android SDK"
     },
@@ -28,7 +28,7 @@
         "device_mitigation_desc": "Mitiga algunos errores específicos del dispositivo aplicando ciertos ajustes para mejorar la compatibilidad y confiabilidad. Mantén esta función deshabilitada a menos que tu dispositivo experimente problemas cuando esté apagado.",
         "save_log_fail": "No se pudieron guardar los registros",
         "unauthorized_mod_title": "Modificación no autorizada detectada",
-        "unauthorized_mod_desc": "Este módulo pudo haber sido modificado por un tercero. Por tu seguridad, descarga la versión oficial del sitio web oficial de Encore Tweaks.",
+        "unauthorized_mod_desc": "Este módulo pudo haber sido modificado por un tercero. Por tu seguridad, descarga la versión oficial del sitio web oficial de EronX Tweaks.",
         "log_saved_desc": "Registros guardados en {0}.",
         "log_saved_title": "Registros del módulo guardados"
     },
@@ -39,7 +39,7 @@
         "create_shortcut": "Crear Atajo para WebUI"
     },
     "support": {
-        "description": "Encore Tweaks es, y siempre será, gratuito para ti y para todos. Sin embargo, puedes mostrar interés haciendo una donación.",
+        "description": "EronX Tweaks es, y siempre será, gratuito para ti y para todos. Sin embargo, puedes mostrar interés haciendo una donación.",
         "title": "Apóyame"
     },
     "toast": {
