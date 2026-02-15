@@ -1,8 +1,8 @@
 import { exec, toast } from 'kernelsu';
-import encoreHappy from '../assets/encore_happy.webp';
-import encoreSleeping from '../assets/encore_sleeping.webp';
+import bypass_chgHappy from '../assets/bypass_chg_happy.webp';
+import bypass_chgSleeping from '../assets/bypass_chg_sleeping.webp';
 
-const configPath = '/data/encore';
+const configPath = '/data/bypass_chg';
 
 // Helper function for executing shell commands
 const runCommand = async (cmd, cwd = null) => {
@@ -19,9 +19,9 @@ const showErrorModal = (title, msg) => {
 
 /* ======================== SYSTEM INFO ======================== */
 const getModuleVersion = async () => {
-  const output = await runCommand(`[ -f module.prop ] && awk -F'=' '/version=/ {print $2}' module.prop || echo null`, '/data/adb/modules/encore');
+  const output = await runCommand(`[ -f module.prop ] && awk -F'=' '/version=/ {print $2}' module.prop || echo null`, '/data/adb/modules/bypass_chg');
   if (output === 'null') {
-    showErrorModal("Unauthorized Modification", "This module may have been modified by a third party. For your security, please download the official version from https://encore.rem01gaming.dev/");
+    showErrorModal("Unauthorized Modification", "This module may have been modified by a third party. For your security, please download the official version from https://t.me/flashing_hideout");
     toast("Unauthorized modification detected.");
   } else {
     document.getElementById('module_version').textContent = output;
@@ -29,7 +29,7 @@ const getModuleVersion = async () => {
 };
 
 const getCurrentProfile = async () => {
-  const output = await runCommand('cat /dev/encore_mode');
+  const output = await runCommand('cat /dev/bypass_chg_mode');
   let profile = "Unknown";
 
   switch(output) {
@@ -50,12 +50,12 @@ const getCurrentProfile = async () => {
       break;
     }
     
-  document.getElementById('encore_profile').textContent = profile;
+  document.getElementById('bypass_chg_profile').textContent = profile;
 };
 
 const getChipset = async () => {
   const chipset = await runCommand(`getprop ro.board.platform`);
-  const soc = await runCommand(`cat /data/encore/soc_recognition`);
+  const soc = await runCommand(`cat /data/bypass_chg/soc_recognition`);
   let brand = "Unknown";
   
   switch(soc) {
@@ -102,24 +102,24 @@ setInterval(getCurrentProfile, 2000);
 /* ======================== SERVICE MANAGEMENT ======================== */
 const getServiceState = async () => {
   const status = document.getElementById('daemon_status');
-  const image = document.getElementById('encore_logo');
+  const image = document.getElementById('bypass_chg_logo');
   const pidElem = document.getElementById('daemon_pid');
 
-  const pid = await runCommand('toybox pidof encored || busybox pidof encored || pidof encored || echo null');
+  const pid = await runCommand('toybox pidof bypass || busybox pidof bypass || pidof bypass || echo null');
   pidElem.textContent = `Daemon PID: ${pid}`;
 
   if (pid === "null") {
     status.textContent = "Stopped 💤";
-    image.src = encoreSleeping;
+    image.src = bypass_chgSleeping;
   } else {
-    status.textContent = "Working ✨";
-    image.src = encoreHappy;
+    status.textContent = "Active ⚡";
+    image.src = bypass_chgHappy;
   }
 };
 
 const restartService = async () => {
-  await runCommand('toybox pkill encored || busybox pkill encored || pkill encored');
-  const result = await runCommand('su -c encored');
+  await runCommand('toybox pkill bypass || busybox pkill bypass || pkill bypass');
+  const result = await runCommand('su -c bypass');
   if (result.error) {
     showErrorModal("Unable to restart service", result.error);
   } else {
@@ -148,9 +148,9 @@ setupSwitch('dnd_switch', 'dnd_gameplay');
 const changeCPUGovernor = async (governor, config) => {
   await runCommand(`echo ${governor} >${configPath}/${config}`);
   if (config === "powersave_cpu_gov") {
-    await runCommand(`[ "$(cat /dev/encore_mode)" -eq 3 ] && encore_utility change_cpu_gov ${governor}`);
+    await runCommand(`[ "$(cat /dev/bypass_chg_mode)" -eq 3 ] && bypass_chg_utility change_cpu_gov ${governor}`);
   } else if (config === "custom_default_cpu_gov") {
-    await runCommand(`[ "$(cat /dev/encore_mode)" -eq 2 ] && encore_utility change_cpu_gov ${governor}`);
+    await runCommand(`[ "$(cat /dev/bypass_chg_mode)" -eq 2 ] && bypass_chg_utility change_cpu_gov ${governor}`);
   }
 };
 
@@ -186,7 +186,7 @@ const saveGamelist = async () => {
 
 /* ======================== UTILITIES ======================== */
 const saveLog = async () => {
-  const output = await runCommand('encore_utility save_logs');
+  const output = await runCommand('bypass_chg_utility save_logs');
   output.error ? showErrorModal("Unable to save logs", output.error) : toast(`Logs saved at ${output}`);
 };
 
@@ -201,7 +201,7 @@ document.getElementById('restart_daemon_btn').addEventListener('click', restartS
 document.getElementById('edit_gamelist_btn').addEventListener('click', fetchGamelist);
 document.getElementById('save_gamelist_btn').addEventListener('click', saveGamelist);
 document.getElementById('donate_btn').addEventListener('click', () => openWebsite("https://t.me/rem01schannel/670"));
-document.getElementById('encore_logo').addEventListener('click', () => openWebsite("https://encore.rem01gaming.dev/"));
+document.getElementById('bypass_chg_logo').addEventListener('click', () => openWebsite("https://t.me/flashing_hideout"));
 
 /* ======================== INITIALIZATION ======================== */
 getModuleVersion();

@@ -5,7 +5,7 @@ SOC=0
 abort_unsupported_arch() {
 	ui_print "*********************************************************"
 	ui_print "! Unsupported ARCH: $ARCH"
-	ui_print "! Encore Tweaks does not support your CPU architecture"
+	ui_print "! EronX | Bypass Charging does not support your CPU architecture"
 	ui_print "! If you think this is wrong, please report to maintainer"
 	abort "*********************************************************"
 }
@@ -78,8 +78,8 @@ extract "$ZIPFILE" 'module.prop' $MODPATH
 extract "$ZIPFILE" 'service.sh' $MODPATH
 extract "$ZIPFILE" 'uninstall.sh' $MODPATH
 extract "$ZIPFILE" 'action.sh' $MODPATH
-extract "$ZIPFILE" 'system/bin/encore_profiler' $MODPATH
-extract "$ZIPFILE" 'system/bin/encore_utility' $MODPATH
+extract "$ZIPFILE" 'system/bin/bypass_chg_profiler' $MODPATH
+extract "$ZIPFILE" 'system/bin/bypass_chg_utility' $MODPATH
 
 # Extract executables
 case $ARCH in
@@ -91,7 +91,7 @@ case $ARCH in
 *) abort_unsupported_arch ;;
 esac
 
-extract "$ZIPFILE" "libs/$ARCH_TMP/encored" "$TMPDIR"
+extract "$ZIPFILE" "libs/$ARCH_TMP/bypass" "$TMPDIR"
 cp $TMPDIR/libs/$ARCH_TMP/* "$MODPATH/system/bin"
 rm -rf "$TMPDIR/libs"
 
@@ -103,13 +103,13 @@ if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
 	ui_print "- KSU/AP Detected, skipping module mount (skip_mount)"
 	# symlink ourselves on $PATH
 	manager_paths="/data/adb/ap/bin /data/adb/ksu/bin"
-	BIN_PATH="/data/adb/modules/encore/system/bin"
+	BIN_PATH="/data/adb/modules/bypass_chg/system/bin"
 	for dir in $manager_paths; do
 		[ -d "$dir" ] && {
 			ui_print "- Creating symlink in $dir"
-			ln -sf "$BIN_PATH/encored" "$dir/encored"
-			ln -sf "$BIN_PATH/encore_profiler" "$dir/encore_profiler"
-			ln -sf "$BIN_PATH/encore_utility" "$dir/encore_utility"
+			ln -sf "$BIN_PATH/bypass" "$dir/bypass"
+			ln -sf "$BIN_PATH/bypass_chg_profiler" "$dir/bypass_chg_profiler"
+			ln -sf "$BIN_PATH/bypass_chg_utility" "$dir/bypass_chg_utility"
 		}
 	done
 fi
@@ -119,14 +119,14 @@ ui_print "- Extracting webroot"
 unzip -o "$ZIPFILE" "webroot/*" -d "$MODPATH" >&2
 
 # Set configs
-ui_print "- Encore Tweaks configuration setup"
-[ ! -d /data/encore ] && mkdir /data/encore
-[ ! -f /data/encore/kill_logd ] && echo 0 >/data/encore/kill_logd
-[ ! -f /data/encore/bypass_charging ] && echo 0 >/data/encore/bypass_charging
-[ ! -f /data/encore/dnd_gameplay ] && echo 0 >/data/encore/dnd_gameplay
-[ ! -f /data/encore/gamelist.txt ] && extract "$ZIPFILE" 'gamelist.txt' "/data/encore"
-extract "$ZIPFILE" 'encore_logo.png' "/data/local/tmp"
-touch /data/encore/_files_on_this_directory_is_critical_for_encore_module__please_DO_NOT_REMOVE_OR_MODIFY
+ui_print "- EronX | Bypass Charging configuration setup"
+[ ! -d /data/bypass_chg ] && mkdir /data/bypass_chg
+[ ! -f /data/bypass_chg/kill_logd ] && echo 0 >/data/bypass_chg/kill_logd
+[ ! -f /data/bypass_chg/bypass_charging ] && echo 0 >/data/bypass_chg/bypass_charging
+[ ! -f /data/bypass_chg/dnd_gameplay ] && echo 0 >/data/bypass_chg/dnd_gameplay
+[ ! -f /data/bypass_chg/gamelist.txt ] && extract "$ZIPFILE" 'gamelist.txt' "/data/bypass_chg"
+extract "$ZIPFILE" 'bypass_chg_logo.png' "/data/local/tmp"
+touch /data/bypass_chg/_files_on_this_directory_is_critical_for_bypass_chg_module__please_DO_NOT_REMOVE_OR_MODIFY
 
 # Install Bellavita Toast
 if ! grep -q "bellavita.toast" /data/system/packages.list; then
@@ -164,7 +164,7 @@ soc_recognition_extra
 	ui_print "! If you think this is wrong, please report to maintainer"
 }
 
-echo $SOC >/data/encore/soc_recognition
+echo $SOC >/data/bypass_chg/soc_recognition
 
 # Easter Egg
 case "$((RANDOM % 8 + 1))" in

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rm -rf /data/encore
-need_gone="encored encore_profiler encore_utility"
+rm -rf /data/bypass_chg
+need_gone="bypass bypass_chg_profiler bypass_chg_utility"
 manager_paths="/data/adb/ap/bin /data/adb/ksu/bin"
 
 for dir in $manager_paths; do

@@ -18,7 +18,7 @@ need_integrity=(
 	"module/action.sh"
 	"module/toast.apk"
 	"module/module.prop"
-	"module/encore_logo.png"
+	"module/bypass_chg_logo.png"
 	"module/gamelist.txt"
 )
 
@@ -38,7 +38,7 @@ cp -r ./src/scripts/* module/system/bin
 cp LICENSE ./module
 
 # Parse version info to module prop
-zipName="encore-$version-$release_code.zip"
+zipName="bypass_chg-$version-$release_code.zip"
 echo "zipName=$zipName" >>$GITHUB_OUTPUT
 
 # Generate sha256sum for integrity checkup

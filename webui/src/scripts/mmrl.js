@@ -1,5 +1,5 @@
 import { MMRLInterfaceFactory } from "mmrl";
-const mmrl = MMRLInterfaceFactory("encore");
+const mmrl = MMRLInterfaceFactory("bypass_chg");
 
 // inject MMRL CSS
 mmrl.injectStyleSheets();

@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "encore-tweaks",
+      "name": "bypass_chg-tweaks",
       "dependencies": {
         "kernelsu": "^1.0.6",
         "mmrl": "^0.2.22",

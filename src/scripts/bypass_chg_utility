@@ -20,6 +20,7 @@ set_dnd() {
 
 enable_bypass_chg() {
 	battery_node_path="/sys/class/power_supply/battery"
+       	apply "1" "${battery_node_path}/input_suspend"
 	apply "1" "${battery_node_path}/batt_slate_mode"
 	apply "1" "${battery_node_path}/battery_input_suspend"
 	apply "1" "${battery_node_path}/bd_trickle_cnt"
@@ -51,6 +52,7 @@ enable_bypass_chg() {
 
 disable_bypass_chg() {
 	battery_node_path="/sys/class/power_supply/battery"
+        apply "0" "${battery_node_path}/input_suspend"
 	apply "0" "${battery_node_path}/batt_slate_mode"
 	apply "0" "${battery_node_path}/battery_input_suspend"
 	apply "0" "${battery_node_path}/bd_trickle_cnt"
@@ -82,20 +84,20 @@ disable_bypass_chg() {
 
 save_logs() {
 	[ ! -d /sdcard/Download ] && mkdir /sdcard/Download
-	log_file="/sdcard/Download/encore_bugreport_$(date +"%Y-%m-%d_%H_%M").txt"
+	log_file="/sdcard/Download/bypass_chg_bugreport_$(date +"%Y-%m-%d_%H_%M").txt"
 	echo "$log_file"
 	cat <<EOF >"$log_file"
 *****************************************************
-Encore Tweaks Log
+EronX | Bypass Charging Log
 
-Module Version: $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/encore/module.prop)
-Chipset: $(getprop "ro.board.platform") ($(cat /data/encore/soc_recognition))
+Module Version: $(awk -F'=' '/version=/ {print $2}' /data/adb/modules/bypass_chg/module.prop)
+Chipset: $(getprop "ro.board.platform") ($(cat /data/bypass_chg/soc_recognition))
 Fingerprint: $(getprop ro.build.fingerprint)
 Android SDK: $(getprop ro.build.version.sdk)
 Kernel: $(uname -r -m)
 *****************************************************
 
-$(cat /data/encore/encore_log)
+$(cat /data/bypass_chg/bypass_chg_log)
 EOF
 }
 

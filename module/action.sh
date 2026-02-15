@@ -2,12 +2,12 @@
 if [ -z "$MMRL" ] && [ ! -z "$MAGISKTMP" ]; then
 	pm path io.github.a13e300.ksuwebui >/dev/null 2>&1 && {
 		echo "- Launching WebUI in KSUWebUIStandalone..."
-		am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "encore"
+		am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "bypass_chg"
 		exit 0
 	}
 	pm path com.dergoogler.mmrl >/dev/null 2>&1 && {
 		echo "- Launching WebUI in MMRL WebUI..."
-		am start -n "com.dergoogler.mmrl/.ui.activity.webui.WebUIActivity" -e MOD_ID "encore"
+		am start -n "com.dergoogler.mmrl/.ui.activity.webui.WebUIActivity" -e MOD_ID "bypass_chg"
 		exit 0
 	}
 fi

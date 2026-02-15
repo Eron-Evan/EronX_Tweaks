@@ -12,15 +12,15 @@ if echo $default_gov | grep -q performance; then
 	default_gov="schedutil"
 fi
 
-echo $default_gov >/data/encore/default_cpu_gov
-[ ! -f /data/encore/powersave_cpu_gov ] && echo $default_gov >/data/encore/powersave_cpu_gov
+echo $default_gov >/data/bypass_chg/default_cpu_gov
+[ ! -f /data/bypass_chg/powersave_cpu_gov ] && echo $default_gov >/data/bypass_chg/powersave_cpu_gov
 
 # Clear old logs
-rm -f /data/encore/encore_log
-touch /data/encore/encore_log
+rm -f /data/bypass_chg/bypass_chg_log
+touch /data/bypass_chg/bypass_chg_log
 
 # Expose ProfileMode from here
-touch /dev/encore_mode
+touch /dev/bypass_chg_mode
 
 # Start Encore Daemon
-encored
+bypass

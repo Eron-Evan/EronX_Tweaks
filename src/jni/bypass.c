@@ -9,10 +9,10 @@
 #include <time.h>
 #include <unistd.h>
 
-#define LOG_FILE "/data/encore/encore_log"
-#define GAMELIST "/data/encore/gamelist.txt"
-#define MODULE_PROP "/data/adb/modules/encore/module.prop"
-#define MODULE_UPDATE "/data/adb/modules/encore/update"
+#define LOG_FILE "/data/bypass_chg/bypass_chg_log"
+#define GAMELIST "/data/bypass_chg/gamelist.txt"
+#define MODULE_PROP "/data/adb/modules/bypass_chg/module.prop"
+#define MODULE_UPDATE "/data/adb/modules/bypass_chg/update"
 #define GAME_STRESS "com.mobile.legends:UnityKillsMe"
 #define MY_PATH                                                                                                                    \
     "PATH=/system/bin:/system/xbin:/data/adb/ap/bin:/data/adb/ksu/bin:/data/adb/magisk:/debug_ramdisk:/sbin:/sbin/su:/su/bin:/su/" \
@@ -21,7 +21,7 @@
 #define MAX_OUTPUT_LENGTH 150
 #define MAX_PATH_LENGTH 256
 
-typedef enum { PERFCOMMON = 0, PERFORMANCE_PROFILE = 1, NORMAL_PROFILE = 2, POWERSAVE_PROFILE = 3 } ProfileMode;
+typedef enum { PERFCOMMON = 0, BYPASS_PROFILE = 1, NORMAL_PROFILE = 2, POWERSAVE_PROFILE = 3 } ProfileMode;
 
 typedef enum { MLBB_NOT_RUNNING = 0, MLBB_RUN_BG = 1, MLBB_RUNNING = 2 } MLBBState;
 
@@ -101,7 +101,7 @@ static inline int write2file(const char* file_path, const char* content, const i
 }
 
 /***********************************************************************************
- * Function Name      : log_encore
+ * Function Name      : log_bypass_chg
  * Inputs             : message (const char *) - message to log
  *                      ... (variadic arguments) - additional arguments for message
  * Outputs            : None
@@ -109,7 +109,7 @@ static inline int write2file(const char* file_path, const char* content, const i
  * Description        : print and logs a formatted message with a timestamp
  *                      to a log file.
  ***********************************************************************************/
-void log_encore(const char* message, ...) {
+void log_bypass_chg(const char* message, ...) {
     char* timestamp = timern();
     if (timestamp != NULL) {
         char logMesg[MAX_OUTPUT_LENGTH];
@@ -121,7 +121,7 @@ void log_encore(const char* message, ...) {
         char logEncore[MAX_OUTPUT_LENGTH];
         snprintf(logEncore, sizeof(logEncore), "[%s] %s", timestamp, logMesg);
         if (write2file(LOG_FILE, logEncore, 1) == -1)
-            printf("[%s] error: encore_log file is inaccessible!\n", timestamp);
+            printf("[%s] error: bypass_chg_log file is inaccessible!\n", timestamp);
 
         free(timestamp);
     }
@@ -137,10 +137,10 @@ void log_encore(const char* message, ...) {
 static inline void sighandler(const int signal) {
     switch (signal) {
     case SIGTERM:
-        log_encore("notice: received SIGTERM.");
+        log_bypass_chg("notice: received SIGTERM.");
         break;
     case SIGINT:
-        log_encore("notice: received SIGINT.");
+        log_bypass_chg("notice: received SIGINT.");
         break;
     }
 
@@ -174,7 +174,7 @@ char* execute_command(const char* format, ...) {
 
     fp = popen(command, "r");
     if (fp == NULL) {
-        log_encore("error: unable to exec command '%s'", command);
+        log_bypass_chg("error: unable to exec command '%s'", command);
         return NULL;
     }
 
@@ -182,7 +182,7 @@ char* execute_command(const char* format, ...) {
         size_t buffer_length = strlen(buffer);
         char* new_result = realloc(result, result_length + buffer_length + 1);
         if (new_result == NULL) {
-            log_encore("error: memory allocation error in execute_command()");
+            log_bypass_chg("error: memory allocation error in execute_command()");
             free(result);
             pclose(fp);
             return NULL;
@@ -196,7 +196,7 @@ char* execute_command(const char* format, ...) {
         result[result_length] = '\0';
 
     if (pclose(fp) == -1)
-        log_encore("error: closing command stream in execute_command()");
+        log_bypass_chg("error: closing command stream in execute_command()");
 
     return result;
 }
@@ -233,7 +233,7 @@ static inline int systemv(const char* format, ...) {
  * Description        : Sends a message to regular notification.
  ***********************************************************************************/
 static inline int notify(const char* message) {
-    return systemv("su -lp 2000 -c \"/system/bin/cmd notification post -t 'Encore Tweaks' 'encore' '%s'\" >/dev/null", message);
+    return systemv("su -lp 2000 -c \"/system/bin/cmd notification post -t 'EronX | Bypass Charging' 'bypass_chg' '%s'\" >/dev/null", message);
 }
 
 /***********************************************************************************
@@ -268,13 +268,13 @@ static inline void set_priority(const char* pid) {
     const int io_prio = 0;  // I/O priority
 
     pid_t process_id = atoi(pid);
-    log_encore("info: applying priority settings for PID %s", pid);
+    log_bypass_chg("info: applying priority settings for PID %s", pid);
 
     if (setpriority(PRIO_PROCESS, process_id, prio) == -1)
-        log_encore("error: unable to set nice priority for %s", pid);
+        log_bypass_chg("error: unable to set nice priority for %s", pid);
 
     if (syscall(SYS_ioprio_set, 1, process_id, (io_class << 13) | io_prio) == -1)
-        log_encore("error: unable to set IO priority for %s", pid);
+        log_bypass_chg("error: unable to set IO priority for %s", pid);
 }
 
 /***********************************************************************************
@@ -285,8 +285,8 @@ static inline void set_priority(const char* pid) {
  * Description        : Prevent 3rd party from renaming the module
  ***********************************************************************************/
 static inline void rewrite_module_prop(void) {
-    systemv("sed -i 's/name=.*/name=Encore Tweaks/' %s", MODULE_PROP);
-    systemv("sed -i 's/author=.*/author=Rem01Gaming/' %s", MODULE_PROP);
+    systemv("sed -i 's/name=.*/name=EronX | Bypass Charging/' %s", MODULE_PROP);
+    systemv("sed -i 's/author=.*/author=ERON/' %s", MODULE_PROP);
 }
 
 /***********************************************************************************
@@ -303,9 +303,9 @@ static inline void rewrite_module_prop(void) {
 static inline int run_profiler(const int profile) {
     char profile_str[16];
     snprintf(profile_str, sizeof(profile_str), "%d", profile);
-    write2file("/dev/encore_mode", profile_str, 0);
+    write2file("/dev/bypass_chg_mode", profile_str, 0);
     rewrite_module_prop();
-    return systemv("encore_profiler %d", profile);
+    return systemv("bypass_chg_profiler %d", profile);
 }
 
 /***********************************************************************************
@@ -314,7 +314,7 @@ static inline int run_profiler(const int profile) {
  * Outputs            : None
  * Returns            : char* (dynamically allocated string with the game package name)
  * Description        : Searches for the currently visible application that matches
- *                      any package name listed in /data/encore/gamelist.txt.
+ *                      any package name listed in /data/bypass_chg/gamelist.txt.
  *                      This helps identify if a specific game is running in the foreground.
  *                      Uses dumpsys to retrieve visible apps and filters by packages
  *                      listed in Gamelist.
@@ -409,21 +409,21 @@ int main(void) {
         exit(EXIT_FAILURE);
     }
 
-    // Handle case when module ID is not 'encore'
+    // Handle case when module ID is not 'bypass_chg'
     if (access(MODULE_PROP, F_OK) != 0) {
-        log_encore("error: critical file not found (%s)", MODULE_PROP);
+        log_bypass_chg("error: critical file not found (%s)", MODULE_PROP);
         exit(EXIT_FAILURE);
     }
 
     // Handle missing Gamelist
     if (access(GAMELIST, F_OK) != 0) {
-        log_encore("error: critical file not found (%s)", GAMELIST);
+        log_bypass_chg("error: critical file not found (%s)", GAMELIST);
         exit(EXIT_FAILURE);
     }
 
     // Daemonize service
     if (daemon(0, 0)) {
-        log_encore("error: unable to daemonize service");
+        log_bypass_chg("error: unable to daemonize service");
         exit(EXIT_FAILURE);
     }
 
@@ -436,7 +436,7 @@ int main(void) {
     MLBBState mlbb_is_running = MLBB_NOT_RUNNING;
     ProfileMode cur_mode = -1;
 
-    log_encore("info: daemon started");
+    log_bypass_chg("info: daemon started");
     run_profiler(PERFCOMMON); // exec perfcommon
 
     while (1) {
@@ -472,27 +472,27 @@ int main(void) {
 
         // Handle in case screenstate is empty
         if (screenstate == NULL) {
-            log_encore("error: unable to get current screenstate, service won't work properly!");
+            log_bypass_chg("error: unable to get current screenstate, service won't work properly!");
             sleep(30);
             continue;
         }
 
         // Handle case when module gets updated
         if (access(MODULE_UPDATE, F_OK) == 0) {
-            log_encore("notice: module update detected, exiting.");
+            log_bypass_chg("notice: module update detected, exiting.");
             notify("Please reboot your device to complete module update.");
             exit(EXIT_SUCCESS);
         }
 
         if (gamestart && (strcmp(screenstate, "Awake") == 0 || strcmp(screenstate, "true") == 0) && mlbb_is_running != MLBB_RUN_BG) {
             // Bail out if we already on performance profile
-            if (cur_mode == PERFORMANCE_PROFILE)
+            if (cur_mode == BYPASS_PROFILE)
                 continue;
 
             // Get PID and check if the game is "real" running program
             pid = pidof(gamestart);
             if (pid == NULL) {
-                log_encore("error: unable to fetch PID of %s", gamestart);
+                log_bypass_chg("error: unable to fetch PID of %s", gamestart);
                 continue;
             }
 
@@ -500,10 +500,10 @@ int main(void) {
             if (mlbb_is_running == MLBB_RUNNING)
                 pid = pidof(GAME_STRESS);
 
-            cur_mode = PERFORMANCE_PROFILE;
-            log_encore("info: applying performance profile for %s", gamestart);
-            notify_toast("Applying performance profile...");
-            run_profiler(PERFORMANCE_PROFILE);
+            cur_mode = BYPASS_PROFILE;
+            log_bypass_chg("info: applying performance profile for %s", gamestart);
+            notify_toast("Bypass charging enabled ⚡");
+            run_profiler(BYPASS_PROFILE);
             set_priority(pid);
         } else if (low_power && (strcmp(low_power, "true") == 0 || strcmp(low_power, "1") == 0)) {
             // Bail out if we already on powersave profile
@@ -511,7 +511,7 @@ int main(void) {
                 continue;
 
             cur_mode = POWERSAVE_PROFILE;
-            log_encore("info: applying powersave profile");
+            log_bypass_chg("info: applying powersave profile");
             notify_toast("Applying powersave profile...");
             run_profiler(POWERSAVE_PROFILE);
         } else {
@@ -520,8 +520,8 @@ int main(void) {
                 continue;
 
             cur_mode = NORMAL_PROFILE;
-            log_encore("info: applying normal profile");
-            notify_toast("Applying normal profile...");
+            log_bypass_chg("info: applying normal profile");
+            notify_toast("Bypass charging disabled");
             run_profiler(NORMAL_PROFILE);
         }
     }
