@@ -215,6 +215,9 @@ qcom_cpudcvs_min_perf() {
 ###################################
 
 mediatek_performance() {
+	# Stop Xiaomi thermal daemon
+	su -c "stop mi_thermald"
+	
 	# PPM policies
 	if [ -d /proc/ppm ]; then
 		grep -E "PWR_THRO|THERMAL" /proc/ppm/policy_status | while read -r row; do
@@ -407,6 +410,9 @@ tensor_performance() {
 ###################################
 
 mediatek_normal() {
+	# Restart Xiaomi thermal daemon when leaving performance mode
+	su -c "start mi_thermald"
+	
 	# PPM policies
 	if [ -d /proc/ppm ]; then
 		grep -E "PWR_THRO|THERMAL" /proc/ppm/policy_status | while read -r row; do
